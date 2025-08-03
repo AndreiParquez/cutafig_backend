@@ -1,0 +1,36 @@
+### Test Laravel Sanctum Backend
+### Make sure your Laravel server is running: php artisan serve
+
+@baseUrl = http://127.0.0.1:8000
+
+### 1. Register a new user
+POST {{baseUrl}}/register
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Test User",
+    "email": "test@example.com",
+    "password": "password123"
+}
+
+### 2. Login and get token
+POST {{baseUrl}}/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "test@example.com",
+    "password": "password123"
+}
+
+### 3. Get authenticated user (replace YOUR_TOKEN_HERE with actual token from login)
+GET {{baseUrl}}/user
+Authorization: Bearer YOUR_TOKEN_HERE
+Accept: application/json
+
+### 4. Test CORS - this should work from allowed origins
+GET {{baseUrl}}/user
+Origin: http://localhost:3000
+Authorization: Bearer YOUR_TOKEN_HERE
+Accept: application/json
