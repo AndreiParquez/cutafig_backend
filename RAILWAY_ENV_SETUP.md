@@ -54,9 +54,14 @@ CORS_ALLOWED_ORIGINS=*
 
 ## Common Issues and Solutions
 
-### 502 Error - Port Issue
-- Ensure your start command uses `--port=$PORT`
-- Railway automatically provides the PORT environment variable
+### 502 Error - Port Issue ⚠️ **CRITICAL**
+- **Problem**: Server runs on port 8080 instead of Railway's $PORT
+- **Symptoms**: Logs show "Server running on [http://0.0.0.0:8080]"
+- **Solution**: 
+  - Ensure your start command uses `--port=$PORT` (not `--port=${PORT}`)
+  - Railway should automatically provide the PORT environment variable
+  - Check Railway logs for "PORT is: XXXX" to verify the variable is set
+  - If PORT is not set, Railway service configuration may be incorrect
 
 ### Database Connection Issues
 - Make sure MySQL service is added to your Railway project
