@@ -5,6 +5,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
+// Health check route
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'healthy',
+        'timestamp' => now(),
+        'environment' => app()->environment(),
+        'php_version' => PHP_VERSION,
+    ]);
+});
+
 // Test database connection
 Route::get('/test-db', function () {
     try {
