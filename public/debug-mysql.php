@@ -11,11 +11,11 @@ header('Content-Type: application/json');
 
 try {
     // Get environment variables
-    $host =  env('DB_HOST');
-    $port =  env('DB_PORT', 3306);
-    $database = env('DB_DATABASE');
-    $username = env('DB_USERNAME');
-    $password =  env('DB_PASSWORD');
+$host = config('database.connections.mysql.host');
+$port = config('database.connections.mysql.port');
+$database = config('database.connections.mysql.database');
+$username = config('database.connections.mysql.username');
+$password = config('database.connections.mysql.password');
     
     $response = [
         'timestamp' => date('Y-m-d H:i:s'),
